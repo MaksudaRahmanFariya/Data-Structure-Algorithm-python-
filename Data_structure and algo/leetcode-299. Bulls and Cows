@@ -1,0 +1,16 @@
+class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        count1 = collections.Counter(secret)
+        count2 = collections.Counter(guess)
+        bulls,cows = 0,0
+        for k,v in count1.items():
+            cows+=min(v,count2[k])
+        for idx,ch in enumerate(secret):
+            if ch == guess[idx]:
+                bulls+=1
+                cows-=1
+        return str(bulls)+"A"+str(cows)+"B"
+    
+            
+            
+        
