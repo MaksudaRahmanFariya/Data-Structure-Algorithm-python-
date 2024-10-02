@@ -1,0 +1,17 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        v = set()
+        while n not in v:
+            v.add(n)
+            n = self.sumof(n)
+            if n==1:
+                return True
+        return False
+    def sumof(self,n:int):
+        output = 0
+        while n:
+            digit = n%10
+            digit = digit**2
+            output+=digit
+            n=n//10
+        return output
