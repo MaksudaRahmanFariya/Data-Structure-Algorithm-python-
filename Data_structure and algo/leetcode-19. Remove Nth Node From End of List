@@ -1,0 +1,24 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        def dfs(start,counter):
+            if counter==1:
+                return not start.next
+            else:
+                counter-=1
+                return dfs(start.next,counter)
+        dummy = current=ListNode(0,head)
+        while True:
+            if dfs(current.next,n)==True:
+                current.next = current.next.next
+                break
+            else:
+                current = current.next
+        return dummy.next
+            
+            
+        
