@@ -1,0 +1,22 @@
+class Solution:
+    def diffWaysToCompute(self, expression: str) -> List[int]:
+        def calc(left,right,operator):
+            if operator == '+':
+                return left+right
+            elif operator == '-':
+                return left - right
+            elif operator == '*':
+                return left*right
+        def diffwaystocompute(expression):
+            if expression.isdigit():
+                return [int(expression)]
+            outputList = []
+            for i in range(len(expression)):
+                if expression[i] in ['+','-','*']:
+                    leftresult = diffwaystocompute(expression[:i])
+                    rightresult = diffwaystocompute(expression[i+1:])
+                    for left in leftresult:
+                        for right in rightresult:
+                            outputList.append(calc(left,right,expression[i]))
+            return outputList
+        return diffwaystocompute(expression)
