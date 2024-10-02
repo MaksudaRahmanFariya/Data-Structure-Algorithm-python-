@@ -1,0 +1,15 @@
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        row_len = len(grid)
+        col_len = len(grid[0])
+        i = 0
+        j = col_len - 1
+        total = 0
+        while i< row_len and j>=0:
+            if grid[i][j]<0:
+                total+=row_len - i
+                j -= 1
+            else:
+                i+=1
+        return total
+            
