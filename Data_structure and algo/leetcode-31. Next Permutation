@@ -1,0 +1,19 @@
+class Solution:
+    def reverse(self,nums,start,stop):
+        size = stop + start
+        for i in range(start,(size+1)//2):
+            nums[i],nums[size-i] = nums[size-i],nums[i]
+    def nextPermutation(self, nums: List[int]) -> None:
+        ind =-1
+        for i in range(len(nums)-2,-1,-1):
+            if nums[i]<nums[i+1]:
+                ind = i
+                break
+        if ind==-1:
+            nums.reverse()
+        else:
+            for i in range(len(nums)-1,ind,-1):
+                if nums[i]>nums[ind]:
+                    nums[i],nums[ind] = nums[ind],nums[i]
+                    break
+            self.reverse(nums,ind+1,len(nums)-1)
