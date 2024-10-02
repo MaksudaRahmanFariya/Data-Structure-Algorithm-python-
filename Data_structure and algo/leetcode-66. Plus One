@@ -1,0 +1,16 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        num=0
+        lst = digits[::-1]
+        for i in range(len(digits)):
+            num+=lst[i]*(10**i)
+        num+=1
+        ans=[]
+        for i in range(len(str(num))):
+            digit=int(num%10)
+            num=(num-digit)//10
+            ans.append(digit)
+        ans = ans[::-1]
+        return ans
+    
+        
