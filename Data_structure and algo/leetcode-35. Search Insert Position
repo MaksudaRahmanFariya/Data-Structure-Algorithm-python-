@@ -1,0 +1,18 @@
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        for k,v in enumerate(nums):
+            if v == target:
+                return k
+            else:
+                if target<nums[-1] and target>nums[0]:
+                    if target>nums[k] and target<nums[k+1]:
+                        return k+1
+                elif target>nums[-1]:
+                    return len(nums)
+                elif target<nums[0]:
+                    return 0
+                    
+                
+                
+                
+        
