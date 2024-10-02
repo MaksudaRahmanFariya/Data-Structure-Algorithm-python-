@@ -1,0 +1,11 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        st = []
+        pair = {")":"(","}":"{","]":"["}
+        for c in s:
+            if st and c in pair and st[-1]==pair[c]:
+                st.pop()
+            else:
+                st.append(c)
+        return False if st else True
+        
