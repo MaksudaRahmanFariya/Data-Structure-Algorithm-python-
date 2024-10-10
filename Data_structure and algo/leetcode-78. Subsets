@@ -1,0 +1,21 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        result = []
+        subs = []
+        def deapth_fs(i):
+            if i>=len(nums):
+                result.append(subs.copy())
+                return 
+            # decision to include nums[i]
+            subs.append(nums[i])
+            deapth_fs(i+1)
+            # decision to not include nums[i]
+            subs.pop()
+            deapth_fs(i+1)  
+        deapth_fs(0)
+        return result  
+        
+
+
+
+        
