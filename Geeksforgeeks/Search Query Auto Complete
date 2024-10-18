@@ -1,0 +1,52 @@
+class AutoCompleteSystem():
+    def __init__(self, sentences, times):
+        # Initialize the data structures
+        self.lookup = {}
+        for sentence, time in zip(sentences, times):
+            self.lookup[sentence] = self.lookup.get(sentence, 0) + time
+        self.query = ""
+        
+    def input(self,c):
+        if c == '#':
+            # End of query, save it in the history and reset current query
+            if self.query:
+                self.lookup[self.query] = self.lookup.get(self.query, 0) + 1
+            self.query = ""
+            return []
+        else:
+            # Add the character to the current query
+            self.query += c
+            # Find the top 3 suggestions
+            result = []
+            for sentence in self.history:
+                if sentence.startswith(self.query):
+                    result.append((self.lookup[sentence], sentence))
+            # Sort by frequency, then by ASCII order
+            result.sort(key=lambda x: (-x[0], x[1]))
+            # Return top 3 suggestions
+            return [sentence for _, sentence in result[:3]]
+if __name__ == "__main__":
+    t = int(input())
+    while t > 0:
+       n = int(input())
+       sen = []
+       time = []
+       for _ in range(n):
+           sent = input()
+           sen.append(sent)
+           ti = int(input())
+           time.append(ti)
+       obj = AutoCompleteSystem(sen,time)
+       q = int(input())
+       for _ in range(q):
+           query = input()
+           qq = ""
+           for x in query:
+              qq+=x
+              sug = obj.input(x)
+              if x == "#":
+                  continue
+              print('Typed: "'+ qq + '",Suggestion:')
+              for y in sug:
+                  print(y)
+         t -=1
