@@ -18,7 +18,7 @@ class AutoCompleteSystem():
             self.query += c
             # Find the top 3 suggestions
             result = []
-            for sentence in self.history:
+            for sentence in self.lookup:
                 if sentence.startswith(self.query):
                     result.append((self.lookup[sentence], sentence))
             # Sort by frequency, then by ASCII order
