@@ -1,0 +1,19 @@
+class Solution:
+    def compareNM(self, n : int, m : int) -> str:
+        # code here
+        if n<m:
+            output = "lesser"
+        elif n==m:
+            output = "equal"
+        elif n>m:
+            output = "greater"
+        return output
+
+if __name__ == "__main__":
+      t = int(input())
+      for _ in range(t):
+         n = int(input())
+         m = int(input())
+         ob = Solution()
+         res = ob.compareNM(str)
+         print(res)
