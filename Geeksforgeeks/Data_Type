@@ -14,9 +14,9 @@ class Solution:
         else:
             return -1
 if __name__ == "__main__":
-t = int(input())
-while _ in range(t):
-str = input()
-ob = Solution()
-res = ob.dataTypeSize(str)
-print(res)
+   t = int(input())
+   for _ in range(t):
+     str = input()
+     ob = Solution()
+     res = ob.dataTypeSize(str)
+    print(res)
