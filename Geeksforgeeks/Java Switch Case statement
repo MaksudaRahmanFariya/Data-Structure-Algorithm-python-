@@ -1,0 +1,20 @@
+import math
+class Solution:
+    def switchCase(self, choice, arr):
+        # Code here
+        
+        if choice == 1:
+            R = arr[0]
+            return math.pi*R*R
+        else:
+            L = arr[0]
+            B = arr[1]
+            return L*B
+if __name__ == "__main__":
+      t = int(input())
+      for _ in range(t):
+         choice = int(input())
+         arr = list(map(int(input()).split()))
+         ob = Solution()
+         res = ob.switchCase(choice,arr)
+         print(res)
