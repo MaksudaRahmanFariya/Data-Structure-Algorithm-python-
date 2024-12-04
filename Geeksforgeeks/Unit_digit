@@ -1,0 +1,12 @@
+class Solution:
+    def evenlyDivides(self, n):
+        # code here
+        result = 0
+        count =[str(i) for i in str(n)]
+        for i in count:
+            if int(i)==0:
+                continue
+            if n%int(i)==0:
+                result += 1
+
+        return result
