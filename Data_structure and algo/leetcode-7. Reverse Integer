@@ -1,5 +1,26 @@
 class Solution:
     def reverse(self, x: int) -> int:
+        result = 0
+        if x<0:
+            sign = -1
+            x = -1*x
+        else:
+            sign = 1
+        count = len(str(x))
+        while count>0:
+            temp = x%10
+            x = x//10
+            result = result*10 + temp
+            count = count-1
+        result = sign*result
+        if -2**31 <= result <= 2**31:
+            return result
+        else:
+            return 0
+#2nd
+
+class Solution:
+    def reverse(self, x: int) -> int:
         MIN = -2147483648
         MAX = 2147483647
         res = 0
