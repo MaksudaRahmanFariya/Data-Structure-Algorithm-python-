@@ -1,0 +1,18 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        ws = 0
+        freqmap = {}
+        maxlen = 0
+        maxfre = 0
+        for e in range(len(s)):
+            currchar = s[e]
+            freqmap[currchar] = freqmap.get(currchar,0)+1
+            maxfre = max(maxfre,freqmap[currchar])
+            if((e-ws+1)-maxfre>k):
+                leftchar = s[ws]
+                freqmap[leftchar]-=1
+                if freqmap[leftchar]==0:
+                    del freqmap[leftchar]
+                ws+=1
+            maxlen = max(maxlen,e-ws+1)
+        return maxlen
