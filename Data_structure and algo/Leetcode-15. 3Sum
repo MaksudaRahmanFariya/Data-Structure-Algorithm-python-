@@ -1,0 +1,21 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        triplets = set()
+        for i in range(len(nums)-2):
+            firstnum = nums[i]
+            j = i+1
+            k = len(nums)-1
+            while j < k:
+                secondnum = nums[j]
+                thirdnum = nums[k]
+                potentials = firstnum + secondnum + thirdnum
+                if potentials>0:
+                    k-=1
+                elif potentials < 0:
+                    j+=1
+                else:
+                    triplets.add((firstnum,secondnum,thirdnum))
+                    j += 1
+                    k-=1
+        return triplets
