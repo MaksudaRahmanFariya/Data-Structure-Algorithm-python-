@@ -1,0 +1,40 @@
+class Solution {
+public:
+    string smallestString(string s) {
+        
+        int n=s.length();
+        
+        bool flag=true;
+        
+        int mini=0;
+        
+        int i=0;
+        while(i<n && s[i]=='a')
+            i++;
+        for(;i<n;i++){
+            if(s[i]=='a'){
+                flag=false;
+                continue;
+            }else{
+
+                if(flag==true){
+                    mini++;
+                    s[i]=s[i]-1;
+                }
+                else
+                    break;
+            }
+        }
+        
+        if(mini==0){
+            if(s[n-1]=='a')
+                s[n-1]='z';
+            else
+                s[n-1]=s[n-1]-1;
+        }
+        
+        return s;
+
+        
+    }
+};
