@@ -1,0 +1,11 @@
+class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        if purchaseAmount%10==0:
+            return abs(100-purchaseAmount)
+        else:
+            amount1 = 10*(purchaseAmount//10)
+            amount2 = 10*((purchaseAmount//10)+1)
+            if abs(amount1 - purchaseAmount)<abs(amount2 - purchaseAmount):
+                return abs(100-amount1)
+            else:
+                return abs(100-amount2)
