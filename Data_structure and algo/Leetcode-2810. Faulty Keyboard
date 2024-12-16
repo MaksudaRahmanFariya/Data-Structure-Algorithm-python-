@@ -1,0 +1,10 @@
+class Solution:
+    def finalString(self, s: str) -> str:
+        n = len(s)
+        result = ""
+        for x in range(n):
+            if s[x]!='i':
+                result+=s[x]
+            else:
+                result="".join(reversed(result))
+        return result
