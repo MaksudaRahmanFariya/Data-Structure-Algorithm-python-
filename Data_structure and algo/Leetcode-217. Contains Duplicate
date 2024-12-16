@@ -1,0 +1,15 @@
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        n = len(nums)
+        nums.sort()
+        flag = 0
+        for i in range(n-1):
+            if nums[i] == nums[i+1]:
+                flag =1
+                break
+            else:
+                flag = 0
+        if flag == 1:
+            return True
+        else:
+            return False
