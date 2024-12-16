@@ -1,0 +1,11 @@
+class Solution:
+    def maxArrayValue(self, nums: List[int]) -> int:
+        merge = True
+        while merge:
+            merge = False
+            for i in range(len(nums)-1,0,-1):
+                if nums[i-1]<=nums[i]:
+                    merge = True
+                    nums[i] = nums[i]+nums[i-1]
+                    nums.pop(i-1)
+        return max(nums)
