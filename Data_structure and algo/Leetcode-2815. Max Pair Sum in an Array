@@ -1,0 +1,23 @@
+class Solution:
+    def maxSum(self, nums: List[int]) -> int:
+        def helper(x):
+            z = len(str(x))
+            y = 0
+            for i in range(z):
+                if (x%10>y):
+                    y = x%10
+                    x = x//10
+                else:
+                    x = x//10
+            return y
+        n = len(nums)
+        sumu = -1
+        for i in range(0,n):
+            for j in range(i+1,n):
+                l1 = helper(nums[i])
+                l2 = helper(nums[j])
+                s = -1
+                if l1 == l2 :
+                    s = nums[i]+nums[j]
+                sumu = max(sumu,s)
+        return sumu
