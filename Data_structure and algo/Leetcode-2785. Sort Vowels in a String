@@ -1,0 +1,15 @@
+class Solution:
+    def sortVowels(self, s: str) -> str:
+        #vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+        ans = list(s)
+        temp = ""
+        for i in range(len(s)):
+            if s[i]== 'a' or s[i]=='A' or s[i]=='e' or s[i]=='E' or s[i]=='i' or s[i]=='I' or s[i]=='o' or s[i]=='O' or s[i]=='u' or s[i]=='U':
+                temp+=s[i]
+        temp = ''.join(sorted(temp))
+        j=0
+        for i in range(len(s)):
+            if s[i]== 'a' or s[i]=='A' or s[i]=='e' or s[i]=='E' or s[i]=='i' or s[i]=='I' or s[i]=='o' or s[i]=='O' or s[i]=='u' or s[i]=='U':
+                ans[i] = temp[j]
+                j+=1
+        return ''.join(ans)
