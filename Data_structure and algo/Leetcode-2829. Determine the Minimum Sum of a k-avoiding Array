@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int minimumSum(int n, int k) {
+        unordered_set<int>hs;
+        int i=1, sum=0, l=0;
+        while(l<n){
+            if(hs.count(k-i)==0){
+                hs.insert(i);
+                sum+=i, l++, i++;
+            }else{
+                i++;
+            }
+        }
+
+        return (int) sum;
+        
+    }
+};
