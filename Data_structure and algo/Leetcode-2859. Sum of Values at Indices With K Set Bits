@@ -1,0 +1,14 @@
+class Solution:
+    def sumIndicesWithKSetBits(self, nums: List[int], k: int) -> int:
+        summ = 0
+        n = len(nums)
+        for i in range(0,n):
+            ind = str(bin(i))
+            count_one = 0
+            for j in ind:
+                if j == "1":
+                    count_one +=1
+            if count_one==k:
+                summ+=nums[i]
+        return summ
+            
