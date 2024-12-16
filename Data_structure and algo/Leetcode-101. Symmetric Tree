@@ -1,0 +1,16 @@
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        node,tmp = [root],[root.val]
+        while node:
+            if tmp!=tmp[::-1]: return False
+            tmp,length = [],len(node)
+            for _ in range(length):
+                i = node.pop(0)
+                if i.left: 
+                    node.append(i.left)
+                if i.right:
+                    node.append(i.right)
+                tmp.append(i.left.val if i.left else None)
+                tmp.append(i.right.val if i.right else None)
+        return True
+                        
