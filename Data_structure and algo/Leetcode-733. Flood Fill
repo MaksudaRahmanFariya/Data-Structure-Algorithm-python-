@@ -1,0 +1,14 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        def fill(start,array,x,y,color):
+            if x == len(array) or y == len(array[0]) or x < 0 or y < 0:
+                return array
+            if array[x][y] == start and array[x][y] != color:
+                
+                array[x][y]=color
+                array = fill(start,array,x+1,y,color)
+                array = fill(start,array,x-1,y,color)
+                array = fill(start, array, x, y+1, color)
+                array = fill(start,array,x,y-1,color)
+            return array
+        return fill(image[sr][sc],image,sr,sc,color)
