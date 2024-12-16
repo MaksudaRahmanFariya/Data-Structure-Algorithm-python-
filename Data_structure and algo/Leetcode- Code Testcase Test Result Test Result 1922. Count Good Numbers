@@ -1,0 +1,13 @@
+class Solution:
+    def countGoodNumbers(self, n: int) -> int:
+        MOD = (10**9) + 7
+        if n%2 == 0:
+            num_even_places = n//2
+            num_odd_places = n//2
+        if n%2!=0:
+            num_even_places = (n//2) + 1
+            num_odd_places = n//2
+        even_combos = pow(5,num_even_places,MOD)
+        odd_combos = pow(4,num_odd_places,MOD)
+        all_combos = (even_combos*odd_combos)
+        return all_combos%MOD
