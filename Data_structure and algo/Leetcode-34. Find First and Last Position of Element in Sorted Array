@@ -1,0 +1,15 @@
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        ans = []
+        if not nums:
+            return [-1,-1]
+        if target in nums:
+            x =nums.index(target)
+            nums.reverse()
+            y = nums.index(target)
+            ans.append(x)
+            z = len(nums)-1-y
+            ans.append(z)
+            return ans
+        else:
+            return [-1,-1]
