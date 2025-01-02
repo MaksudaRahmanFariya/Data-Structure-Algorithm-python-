@@ -1,0 +1,18 @@
+class Solution:
+    def Armstrong_number(self, a: int):
+        count = len(str(a))
+        x = count
+        sum = 0
+        b = a
+        while(x):
+            sum+=pow(a%10, count)
+            a = a//10
+            x-=1
+            
+        if sum == b:
+            return True
+        else:
+            return False
+if __name__ == "__main__":
+    a = int(input())
+    print(Armstrong_number(a))
