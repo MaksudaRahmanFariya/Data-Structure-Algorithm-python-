@@ -1,0 +1,37 @@
+
+from typing import List
+import math
+
+
+# } Driver Code Ends
+
+#User function Template for python3
+
+class Solution:
+    def lcmAndGcd(self, a : int, b : int) -> List[int]:
+        # code here
+        #euclidean function(In this algorithm, we divide the greater by smaller and take the remainder. Now, divide the smaller by this remainder. Repeat until the remainder is 0.)
+        a1 = a
+        b1 = b
+        if a<b:
+            temp = a
+            a = b
+            b = temp
+        while (b):
+            a,b = b, a%b
+        gcd = a
+        lcm = a1*b1 // gcd
+        return lcm , gcd
+            
+
+
+
+if __name__=="__main__":
+    t = int(input())
+    for _ in range(t):
+        a = int(input())
+        b = int(input())
+        obj = Solution()
+        res = obj.lcmAndGcd(a, b)
+        print(f"{res[0]} {res[1]}")
+        print("~")
