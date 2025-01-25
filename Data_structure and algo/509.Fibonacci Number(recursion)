@@ -1,0 +1,15 @@
+class Solution:
+    def fn(self,n,lsf):
+        if n<=1:
+            return n
+        if lsf[n]!=-1:
+            return lsf[n]
+        lsf[n] = self.fn(n-1,lsf) + self.fn(n-2,lsf)
+        return lsf[n]
+    def fib(self, n: int) -> int:
+        lsf = [-1] * (n+1)
+        return self.fn(n,lsf)
+
+
+
+        
