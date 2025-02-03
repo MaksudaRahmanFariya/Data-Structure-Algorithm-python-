@@ -1,0 +1,50 @@
+#User function Template for python3
+
+class Solution:
+    def removedup(self,arr):
+        seen = set()
+        index = 0
+        for i in range(len(arr)):
+            if arr[i] not in seen:
+                seen.add(arr[i])
+                arr[index] = arr[i]
+                index +=1
+        return list(seen)
+    #Function to return a list containing the union of the two arrays.
+    def findUnion(self,a,b):
+        # code here
+        a = self.removedup(a)
+        b = self.removedup(b)
+        unique = []
+        unique = a + b
+        res = self.removedup(unique)
+        positive_nums = [x for x in res if x >= 0]
+        negative_nums = [x for x in res if x < 0]
+        positive_nums.sort()
+        negative_nums.sort()
+        res = negative_nums + positive_nums
+        
+        return res
+            
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# Contributed by : Nagendra Jha
+# Modified by : Sagar Gupta
+
+if __name__ == '__main__':
+    test_cases = int(input())
+    for cases in range(test_cases):
+        a = list(map(int, input().strip().split()))
+        b = list(map(int, input().strip().split()))
+        ob = Solution()
+        li = ob.findUnion(a, b)
+        for val in li:
+            print(val, end=' ')
+        print()
+        print("~")
+
+# } Driver Code Ends
