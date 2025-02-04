@@ -1,0 +1,19 @@
+import math
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        o = math.floor(n/3)
+        count = 0
+        res = {}
+        for num in nums:
+            if num not in res:
+                res[num] = 1
+            else:
+                res[num]+=1
+        score = []
+        for i,c in res.items():
+            if c>o:
+                score.append(i)
+        return score
+
+        
