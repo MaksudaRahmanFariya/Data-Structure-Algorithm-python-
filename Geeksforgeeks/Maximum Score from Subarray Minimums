@@ -1,0 +1,36 @@
+#User function Template for python3
+
+class Solution:
+    def pairWithMaxSum(self, arr):
+        # Your code goes here
+        n = len(arr)
+        max_score = 0
+        for i in range(n-1):
+            max_score = max(max_score,arr[i]+arr[i+1])
+        return max_score
+                
+    
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+
+def main():
+
+    T = int(input())
+
+    while (T > 0):
+        a = [int(x) for x in input().strip().split()]
+        ob = Solution()
+        print(ob.pairWithMaxSum(a))
+        print("~")
+        T -= 1
+
+
+if __name__ == "__main__":
+    main()
+
+# } Driver Code Ends
