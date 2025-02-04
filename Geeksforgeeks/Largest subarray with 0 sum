@@ -1,0 +1,31 @@
+#Your task is to complete this function
+class Solution:
+    def maxLen(self, arr):
+        prefix_sum_index = {}  # Stores the first occurrence index of a prefix sum
+        prefix_sum = 0
+        max_length = 0
+
+        for i, num in enumerate(arr):
+            prefix_sum += num  # Update prefix sum
+            
+            if prefix_sum == 0:
+                max_length = i + 1  # Whole subarray from index 0 to i has sum 0
+            
+            if prefix_sum in prefix_sum_index:
+                max_length = max(max_length, i - prefix_sum_index[prefix_sum])
+            else:
+                prefix_sum_index[prefix_sum] = i  # Store the first occurrence index
+
+        return max_length
+
+#{ 
+ # Driver Code Starts
+if __name__ == '__main__':
+    t = int(input())
+    for i in range(t):
+        arr = list(map(int, input().strip().split()))
+        ob = Solution()
+        print(ob.maxLen(arr))
+        print("~")
+
+# } Driver Code Ends
