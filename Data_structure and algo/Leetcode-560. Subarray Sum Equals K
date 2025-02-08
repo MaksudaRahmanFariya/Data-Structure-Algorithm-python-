@@ -1,0 +1,11 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        output = {0:1}
+        curr=total=0 
+
+        for i in nums:
+            total +=i
+            if total - k in output:
+                curr +=output[total-k]
+            output[total] = 1 + output.get(total,0)
+        return curr
