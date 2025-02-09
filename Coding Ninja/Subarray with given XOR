@@ -1,0 +1,17 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        xor_count = {0:1}
+        prefix_xor = 0
+        output = 0
+        for num in A:
+            prefix_xor ^=num
+            if prefix_xor ^ B in xor_count:
+                output +=xor_count[prefix_xor^B]
+            if prefix_xor in xor_count:
+                xor_count[prefix_xor] +=1
+            else:
+                xor_count[prefix_xor] = 1
+        return output
