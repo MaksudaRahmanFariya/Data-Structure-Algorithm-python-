@@ -1,0 +1,21 @@
+
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:  
+        intervals.sort(key=lambda i:i[0])
+        output = [intervals[0]]
+        l = len(intervals)
+        for i in range(1,l):
+            curr = intervals[i]
+            last_marged = output[-1]
+            if curr[0]<=last_marged[1]:
+                last_marged[1] = max(curr[1],last_marged[1])
+            else:
+                output.append(curr)
+
+        return output
+
+
+
+
+
+        
