@@ -1,0 +1,44 @@
+#User function Template for python3
+class Solution:
+    def findTwoElement( self,arr): 
+        # code here
+        l = len(arr)
+        ex_sum = l*(l+1)//2
+        ex_sum_s = (l * (l + 1) * (2 * l + 1)) // 6
+        a_sum = sum(arr)
+        a_sum_s = sum(x*x for x in arr)
+        #missing value:
+        diff = ex_sum - a_sum  # (a - b)
+        diff_sq = ex_sum_s - a_sum_s
+        sum_ab = diff_sq//diff
+        m = (diff + sum_ab) // 2
+        r = sum_ab - m
+        
+            
+                
+
+
+            
+
+        return [r,m]
+                
+
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+
+    tc = int(input())
+    while tc > 0:
+        arr = list(map(int, input().strip().split()))
+        ob = Solution()
+        ans = ob.findTwoElement(arr)
+        print(str(ans[0]) + " " + str(ans[1]))
+        tc = tc - 1
+        print("~")
+
+# } Driver Code Ends
