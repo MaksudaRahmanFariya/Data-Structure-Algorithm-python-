@@ -1,0 +1,13 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        pre, post, ans = nums[0], nums[0], nums[0]
+        n = len(nums)
+        for i in range(1,n):
+            curr = nums[i]
+            temp_max = max(curr,curr*pre, curr*post)
+            post = min(curr,curr*pre,curr*post)
+            pre = temp_max
+            ans = max(ans,pre)
+        return ans
+
+            
