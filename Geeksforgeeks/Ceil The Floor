@@ -1,0 +1,58 @@
+#User function Template for python3
+
+class Solution:
+    def Floor(self,arr,x):
+        left = 0
+        right = len(arr)-1
+        floor = -1
+        while left<=right:
+            mid = (left+right)//2
+            if arr[mid]<=x:
+                floor = arr[mid]
+                left = mid+1
+            else:
+                right = mid-1
+        return floor
+    def Celi(self,arr,x):
+        left = 0
+        right = len(arr)-1
+        celi = -1
+        while left<=right:
+            mid = (left+right)//2
+            if arr[mid]>=x:
+                celi = arr[mid]
+                right = mid-1
+            else:
+                left = mid+1
+        return celi
+        
+    def getFloorAndCeil(self, x: int, arr: list) -> list:
+        # code here
+        arr.sort()
+        floor = self.Floor(arr,x)
+        celi = self.Celi(arr,x)
+        return floor,celi
+
+        
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        x = int(input())
+        arr = list(map(int, input().split()))
+
+        ob = Solution()
+        ans = ob.getFloorAndCeil(x, arr)
+        print(ans[0], ans[1])
+        print("~")
+
+
+if __name__ == "__main__":
+    main()
+
+# } Driver Code Ends
