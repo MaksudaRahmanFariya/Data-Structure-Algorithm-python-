@@ -1,0 +1,22 @@
+import heapq
+class Solution:
+
+    def minOperations(self, nums: List[int], k: int) -> int:
+        count=0
+        t = 0
+        n = len(nums)
+        heapq.heapify(nums)
+        if n>1:
+            while t==0:
+                if all(num >= k for num in nums):
+                    t = 1
+                    break
+
+                else:
+                    s1 = heapq.heappop(nums)
+                    s2 = heapq.heappop(nums)
+                    new_num = s1*2 + s2
+                    heapq.heappush(nums, new_num)
+                    count+=1
+        return count
+                
