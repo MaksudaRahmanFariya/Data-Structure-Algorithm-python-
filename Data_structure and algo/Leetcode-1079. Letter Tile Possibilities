@@ -1,0 +1,17 @@
+from collections import Counter
+class Solution:
+    def numTilePossibilities(self, tiles: str) -> int:
+        def backtrack(counter):
+            count = 0
+            for char in counter:
+                if counter[char]>0:
+                    count+=1 #count new sequence
+                    counter[char] -=1 # Use this tile
+                    count+=backtrack(counter) # Recurse with remaining tiles
+                    counter[char] += 1                           #Backtrack (restore the tile count)
+            return count
+        counter = Counter(tiles)
+        return backtrack(counter)
+        
+
+        
