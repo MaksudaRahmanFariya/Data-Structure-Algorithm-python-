@@ -1,0 +1,13 @@
+from collections import Counter
+class Solution:
+    def smallestNumber(self, pattern: str) -> str:
+        n = len(pattern)
+        res = []
+        ans =""
+        for i in range(n+1):
+            res.append(i+1)
+            if i==n or pattern[i] == 'I':
+                while res:
+                    ans +=str(res.pop())
+        return ans
+        
