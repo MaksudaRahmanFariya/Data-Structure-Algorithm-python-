@@ -1,0 +1,31 @@
+class Solution:
+    def numberOfComponents(self, properties: List[List[int]], k: int) -> int:
+        n = len(properties)
+        graph = {i: [] for i in range(n)}
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                if len(set(properties[i]) & set(properties[j])) >= k:
+                    graph[i].append(j)
+                    graph[j].append(i)
+
+        visited = set()
+        components = 0
+
+        def dfs(node):
+            stack = [node]
+            while stack:
+                curr = stack.pop()
+                for neighbor in graph[curr]:
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        stack.append(neighbor)
+
+        for i in range(n):
+            if i not in visited:
+                components += 1
+                visited.add(i)
+                dfs(i)
+
+        return components
+        
