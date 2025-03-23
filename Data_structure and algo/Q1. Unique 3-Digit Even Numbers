@@ -1,0 +1,12 @@
+from itertools import permutations
+class Solution:
+    def totalNumbers(self, digits: List[int]) -> int:
+        unique_num = set()
+        digit_set = set(digits)
+        for prem in permutations(digits,3):
+            h,t,o = prem
+            if h!=0 and o%2 == 0:
+                num = h*100 + t*10 + o
+                unique_num.add(num)
+        return len(unique_num)
+        
