@@ -1,0 +1,8 @@
+class Solution:
+    def maxContainers(self, n: int, w: int, maxWeight: int) -> int:
+        container = n*n
+        if container* w <= maxWeight:
+            return container
+        else:
+            return maxWeight//w
+        ©leetcode
