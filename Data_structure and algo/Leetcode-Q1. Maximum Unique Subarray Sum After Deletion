@@ -1,0 +1,10 @@
+class Solution:
+    def maxSum(self, nums: List[int]) -> int:
+        f_list = []
+        if all(num < 0 for num in nums):
+            f_list.append(max(nums))
+        else:
+            for i in nums:
+                if i>=0 and i not in f_list:
+                    f_list.append(i)
+        return sum(f_list)
