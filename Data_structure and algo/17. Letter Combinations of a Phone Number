@@ -9,9 +9,9 @@ class Solution:
         def backtracking(idx,temp):
             if idx == n:
                 res.append(''.join(temp))
-                return
+                return                          # Important: Exit this path of recursion
             for digit in digits_map[digits[idx]]:
-                temp.append(digit)
+                temp.append(digit)                       # Choose a letter
                 backtracking(idx+1,temp)
                 temp.pop()
         backtracking(0,[])
