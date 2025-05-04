@@ -1,0 +1,21 @@
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        digits_map = {
+            '2' : 'abc', '3' : 'def', '4' : 'ghi', '5' : 'jkl', '6' : 'mno','7' : 'pqrs', '8' : 'tuv', '9' : 'wxyz'}
+        n = len(digits)
+        if n == 0:
+            return []
+        res = []
+        def backtracking(idx,temp):
+            if idx == n:
+                res.append(''.join(temp))
+                return
+            for digit in digits_map[digits[idx]]:
+                temp.append(digit)
+                backtracking(idx+1,temp)
+                temp.pop()
+        backtracking(0,[])
+        return res
+            
+            
+          
