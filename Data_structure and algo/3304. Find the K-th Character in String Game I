@@ -1,0 +1,10 @@
+class Solution:
+    def kthCharacter(self, k: int) -> str:
+        word = "a"
+        def wordchanger(w):
+            r = ''.join(chr(ord(c)+1) for c in w)
+            return w+r
+        while len(word)<k:
+            word = wordchanger(word)
+        
+        return word[k-1]
