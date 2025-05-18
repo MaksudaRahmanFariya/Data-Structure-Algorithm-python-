@@ -1,0 +1,27 @@
+class Solution:
+    def strobo(self, num):
+        strobo_num = {
+            '0': '0',
+            '1': '1',
+            '8': '8',
+            '6': '9',
+            '9': '6'
+
+        }
+        if len(num) == 1:
+            return num in ['0', '1', '8']
+        else:
+            i = 0
+            j = len(num)-1
+            while i <= j:
+                if num[i] in strobo_num and strobo_num[num[i]] == num[j]:
+                    i += 1
+                    j -= 1
+                else:
+                    return False
+        return True
+if __name__ == '__main__':
+    print('Enter a number: ')
+    num = input()
+    c = Solution()
+    print(c.strobo(num))
