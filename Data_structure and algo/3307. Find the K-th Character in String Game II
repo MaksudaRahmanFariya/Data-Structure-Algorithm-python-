@@ -1,0 +1,21 @@
+class Solution:
+    def kthCharacter(self, k: int, operations: List[int]) -> str:
+        def next_char(c):
+            if c == "z":
+                return "a"
+            return chr(ord(c) + 1)
+
+        def rec(k):
+            # This is the 1-based index
+            ind = math.ceil((math.log(k, 2)))
+            if k == 1 or ind == 0:
+                return "a"
+            if operations[ind - 1] == 0:
+                return rec(k - 2 ** (ind - 1))
+            else:
+                return next_char(rec(k - 2 ** (ind - 1)))
+
+        return rec(k)
+
+
+        
