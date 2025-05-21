@@ -1,0 +1,23 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+        def backtracking(start,end):
+            res.append(end[:])
+            for i in range(start,len(nums)):
+                end.append(nums[i])
+                backtracking(i+1,end)
+                end.pop()
+        def newlist(num):
+            seen = set()
+            new_list = []
+            for s in res:
+                st = tuple(s)
+                if st not in seen:
+                    new_list.append(s)
+                    seen.add(st)
+            return new_list
+
+        backtracking(0,[])
+        new_list = newlist(res)
+        return new_list
