@@ -1,0 +1,25 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        res = []
+        def backtracking(node,curr_path,curr_sum):
+            if not node:
+                return
+            curr_path.append(node.val)
+            curr_sum+=node.val
+            if not node.left  and not node.right and curr_sum == targetSum:
+                res.append(list(curr_path))
+            backtracking(node.left,curr_path,curr_sum)
+            backtracking(node.right,curr_path,curr_sum)
+            curr_path.pop()
+          
+            
+            
+        backtracking(root,[],0)
+        return res
+
