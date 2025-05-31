@@ -1,0 +1,15 @@
+class Solution:
+    def minimumPairRemoval(self, nums: List[int]) -> int:   
+        count = 0  
+        while any(nums[i]>nums[i+1] for i in range(len(nums)-1)):
+            min_sum = float('inf')
+            pair_sum = 0
+            for i in range(len(nums)-1):
+                pair_sum = nums[i] + nums[i+1]
+                if pair_sum<min_sum:
+                    min_sum = pair_sum
+                    index = i
+            nums[index] = min_sum
+            del nums[index+1]
+            count +=1
+        return count
