@@ -1,0 +1,63 @@
+class Node:
+    def __init__(self,data=None, next = None):
+        self.data = data
+        self.next = next
+class LinkedList:
+    def __init__(self, head=None):
+        self.head = head
+    def insert_at_end(self,val):
+        if self.head is None:
+            self.head = Node(val,None)
+            return
+        itr = self.head
+        while itr.next:
+            itr = itr.next
+        itr.next = Node(val,None)
+
+    def insert_values(self, li):
+        self.head = None
+        for data in li:
+            self.insert_at_end(data)
+    def print(self):
+        itr = self.head
+        li = ''
+        while itr:
+            li += str(itr.data)+'->' if itr.next else str(itr.data)
+            itr = itr.next
+        print(li)
+    def remove_elements(self, m, n):
+        itr = self.head
+        count = 0
+        while itr and count < m-1:
+            itr = itr.next
+            count += 1
+        if not itr or not itr.next:
+            return
+        temp = itr
+        skip = itr.next
+        for _ in range(n):
+            if skip:
+                skip = skip.next
+            else:
+                break
+            temp.next = skip
+            #if count == m+n-1:
+                #it.next = Node(it, itr.next)
+                #break
+            #count +=1
+            #itr = itr.next
+
+
+        #count = 0
+        #while itr:
+            #if count == m-1
+
+
+if __name__ == '__main__':
+    li = LinkedList()
+    li.insert_values([1, 2, 3, 4, 5, 6])
+    li.print()
+    li.insert_at_end(9)
+    li.print()
+    li.remove_elements(2,2)
+    li.print()
