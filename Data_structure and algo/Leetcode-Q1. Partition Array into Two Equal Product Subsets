@@ -1,0 +1,10 @@
+class Solution:
+    def checkEqualPartitions(self, nums: List[int], target: int) -> bool:
+        res = True
+        n = len(nums)
+        for i in range(n):
+            if target%nums[i]!=0:
+                res = False
+                break
+        return res
+©leetcode
