@@ -1,0 +1,16 @@
+class Solution:
+    def readBinaryWatch(self, turnedOn: int) -> List[str]:
+        H = [8,4,2,1]
+        M = [32,16,8,4,2,1]
+        res = set()
+        def backtrack(ton,h,m,h_idx,m_idx):     #h,m:current hour and minute values, h_idx, m_idx:indices to avoid reusing LEDs
+            if ton == 0:
+                if h<12 and m<60 :
+                    res.add(f"{h}:{m:02d}")
+                return
+            for i in range(h_idx,len(H)):
+                backtrack(ton-1,h+H[i],m,i+1,m_idx)
+            for j in range(m_idx,len(M)):
+                backtrack(ton-1,h,m+M[j],h_idx,j+1)
+        backtrack(turnedOn, 0,0,0,0)
+        return sorted(res)
