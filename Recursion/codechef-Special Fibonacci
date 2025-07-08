@@ -1,0 +1,12 @@
+def fname(a,b,n):
+    if n==0:
+        return a
+    if n == 1:
+        return b
+    return fname(a,b,n-1)^fname(a,b,n-2)
+if __name__ == "__main__":
+    t = int(input())
+    while t>0:
+        a,b,n = map(int,input().split())
+        print(fname(a,b,n))
+        t-=1
