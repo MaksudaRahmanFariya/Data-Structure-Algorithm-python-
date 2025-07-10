@@ -1,0 +1,14 @@
+def backtracking(a,b,c,n):
+    if n == 1:
+        return a
+    if n == 2:
+        return b
+    if n == 3:
+        return c
+    return backtracking(a,b,c,n-1)+backtracking(a,b,c,n-2) + backtracking(a,b,c,n-3)
+if __name__ == "__main__":
+    t = int(input())
+    while t>0:
+        a,b,c,n = map(int,input().split())
+        print(backtracking(a,b,c,n))
+        t-=1
