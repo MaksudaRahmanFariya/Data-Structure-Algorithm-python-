@@ -1,0 +1,11 @@
+class Solution:
+    def numberOfSteps(self, num: int) -> int:
+        def recursion(num,step):
+            if num == 0:
+                return step
+            if num%2==0:
+                step +=1
+                return recursion(num//2,step)
+            step +=1
+            return recursion(num-1,step)
+        return recursion(num,0)
