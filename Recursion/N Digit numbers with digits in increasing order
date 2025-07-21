@@ -1,0 +1,25 @@
+
+from typing import List
+
+
+class Solution:
+    def increasingNumbers(self, n : int) -> List[int]:
+        # code here
+        res = []
+        def numbers(number,last):
+            if len(number)== n:
+                res.append(int(number))
+                return
+            for i in range(last+1,10):
+                numbers(number+str(i),i)
+        if n == 1:
+            return list(range(10))
+            
+        numbers("",0)
+        return res
+        
+            
+            
+            
+    
+        
