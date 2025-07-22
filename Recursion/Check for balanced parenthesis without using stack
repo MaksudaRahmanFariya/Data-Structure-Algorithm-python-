@@ -1,0 +1,38 @@
+def findclosing(c):
+    if c == '(':
+        return ')'
+    if c == '{':
+        return '}'
+    if c == '[':
+        return ']'
+    return None
+def backtracking(arr):
+    index = len(arr)
+    if index == 0:
+        return True
+    if index == 1:
+        return False
+    if arr[0] == ')' or arr[0]=='}' or arr[0] == ']':
+        return False
+    closing = findclosing(arr[0])
+    i,count = 1,0
+    while i<index:
+        if arr[i] == arr[0]:
+            count +=1
+        if arr[i] == closing:
+            if count == 0:
+                break
+            count -=1
+        i+=1
+    if i == index:
+        return False
+    if i == 2:
+        return backtracking(arr[i:index-1])
+    return backtracking(arr[1:i]) and backtracking(arr[i+1:index])
+if __name__ == "__main__":
+    expr = "[(])"
+    if (backtracking(expr)):
+        print("Balanced")
+    else:
+        print("Not Balanced")
+
