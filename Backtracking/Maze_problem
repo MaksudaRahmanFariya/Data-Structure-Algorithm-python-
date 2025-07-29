@@ -1,0 +1,92 @@
+def numberofpaths(r,c):
+    if r==1 or c == 1:
+        return 1
+    left = numberofpaths(r,c-1)
+    right = numberofpaths(r-1,c)
+    return left+right
+def travel_path(curr,r,c,res):
+    if r==1 and c == 1:
+        res.append(curr)
+        return
+    if r > 1:
+        travel_path(curr+'R',r-1,c,res)
+    if c > 1:
+        travel_path(curr+'D',r,c-1,res)
+    return res
+def travel_pathdimension(curr,r,c,res):
+    if r == 1 and c == 1:
+        res.append(curr)
+        return
+    if r > 1:
+        travel_path(curr+'R',r-1,c,res)
+    if c > 1:
+        travel_path(curr+'D',r,c-1,res)
+    if r>1 and c>1:
+        travel_path(curr+'D',r-1,c-1,res)
+    return res
+def travel_allpath(curr,r,c,res,board):
+    if r == len(board)-1 and c == len(board[0])-1:
+        res.append(curr)
+        return
+    if not board[r][c]:
+        return
+    if r < len(board)-1:
+        travel_allpath(curr+'D', r+1, c, res, board)
+    if c < len(board[0])-1:
+        travel_allpath(curr+'R', r, c+1,res, board)
+    if r < len(board)-1 and c < len(board[0])-1:
+        travel_allpath(curr+'D', r+1, c+1, res, board)
+    return res
+
+def travel_pathinall(curr,r,c,res,board):
+    if r==len(board)-1 and c == len(board[0])-1:
+        res.append(curr)
+        return
+    if not board[r][c]:
+        return
+    board[r][c] = False
+    if r<len(board)-1:
+        travel_pathinall(curr+'D',r+1,c,res,board)
+    if c<len(board[0])-1:
+        travel_pathinall(curr+'R',r,c+1,res,board)
+    if r>0:
+        travel_pathinall(curr+'U',r-1,c,res,board)
+    if c>0:
+        travel_pathinall(curr+'L',r,c-1,res,board)
+    board[r][c] = True
+    return res
+def travel_pathinanumber(curr,r,c,res,steps,board):
+    if r == len(board)-1 and c == len(board[0])-1:
+        res.append(curr)
+        board[r][c] = steps
+        print(board)
+        return
+    if board[r][c]>0:
+        return
+    board[r][c] = steps
+    if r < len(board)-1:
+        travel_pathinanumber(curr+'D',r+1,c,res,steps+1,board)
+    if c < len(board[0])-1:
+        travel_pathinanumber(curr+'R',r,c+1,res,steps+1,board)
+    if r > 0:
+        travel_pathinanumber(curr+'U',r-1,c,res,steps+1, board)
+    if c > 0:
+        travel_pathinanumber(curr+'L',r,c-1,res,steps+1, board)
+    board[r][c] = 0
+    return res
+
+
+
+if __name__ == "__main__":
+    print(numberofpaths(3,4))
+    print(travel_path("",3,4,[]))
+    print(travel_pathdimension("",3,3,[]))
+    board = [[True, True, True],
+             [True, True, True],
+             [True,True,True]]
+    print(travel_allpath("",0,0,[],board))
+    print(travel_pathinall("",0,0,[],board))
+    board = [[0,0,0],
+             [0,0,0],
+             [0,0,0]]
+    print(travel_pathinanumber("",0,0,[],1,board))
