@@ -1,0 +1,13 @@
+def target_sum(nums,target,curr_sum,index):
+    if index == len(nums):
+        if curr_sum == target:
+            return 1
+        else:
+            return 0
+    left = target_sum(nums,target,curr_sum+nums[index],index+1)
+    right = target_sum(nums,target,curr_sum-nums[index],index+1)
+    return left+right
+if __name__ == "__main__":
+    nums = [1,1,1,1]
+    target = 4
+    print(target_sum(nums,target,0,0))
