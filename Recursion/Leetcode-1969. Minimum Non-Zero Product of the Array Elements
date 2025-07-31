@@ -1,0 +1,16 @@
+class Solution:
+    def minNonZeroProduct(self, p: int) -> int:
+        MOD = 10**9 + 7
+        total_number = 2**p -1   # 2^p
+        def recursion(x,y):
+            if y == 0:
+                return 1
+            half = recursion(x,y//2)
+            if y%2 == 0:
+                return (half*half)*MOD
+            else:
+                return (half*half*x)%MOD
+        mid = total_number//2
+        return(recursion(total_number-1,mid)*total_number)%MOD
+
+        
