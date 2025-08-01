@@ -1,0 +1,12 @@
+class Solution:
+    def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
+        target = []
+        n = len(index)
+        for i in range(n):
+            position = index[i]
+            value = nums[i]
+            target.insert(position,value)
+        return target
+
+
+        
