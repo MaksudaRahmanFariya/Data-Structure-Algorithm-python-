@@ -1,0 +1,18 @@
+class Solution:
+    def oddCells(self, m: int, n: int, indices: List[List[int]]) -> int:
+        mat = [[0 for _ in range(n)]for _ in range(m)]
+        
+        for r,c in indices:
+            for j in range(n):
+                mat[r][j]+=1
+            for i in range(m):
+                mat[i][c]+=1
+        odd_number = 0
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j]%2 == 1:
+                    odd_number +=1
+        return odd_number
+        #return mat
+
+        
