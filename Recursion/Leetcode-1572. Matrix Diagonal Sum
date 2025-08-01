@@ -1,0 +1,13 @@
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        digsum = 0
+        row = len(mat)
+        def adding(index):
+            if index == row:
+                return 0
+            digsum = mat[index][index] + mat[index][row - index-1]
+            return digsum+adding(index+1)
+        digsum = adding(0)
+        if row%2==1:
+            digsum -=mat[row//2][row//2]
+        return digsum
