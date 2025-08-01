@@ -1,0 +1,10 @@
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+        if len(sentence)<26:
+            return False
+        unique_letter = set(sentence)
+        for value in range(97,123):
+            if chr(value) not in unique_letter:
+                return False
+        return True
+
