@@ -1,0 +1,16 @@
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        n = len(num)-1
+        c = 0
+        for i in range(n,-1,-1):
+            digit = k%10
+            k //= 10
+            total = num[i]+digit+c
+            num[i] = total%10
+            c = total//10
+        while k>0 or c>0:
+            total = (k%10)+c
+            k//=10
+            num.insert(0,total%10)
+            c = total//10
+        return num
