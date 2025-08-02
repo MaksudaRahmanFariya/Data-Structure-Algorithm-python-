@@ -1,0 +1,18 @@
+class Solution:
+    def earliestFinishTime(self, landStartTime: List[int], landDuration: List[int], waterStartTime: List[int], waterDuration: List[int]) -> int:
+        mintime = 2**62
+        for i in range(len(landStartTime)):
+            for j in range(len(waterStartTime)):
+                startland = landStartTime[i]
+                endland = startland + landDuration[i]
+                startwater = max(endland,waterStartTime[j])
+                endWater = startwater + waterDuration[j]
+                mintime = min(mintime,endWater)
+        for i in range(len(waterStartTime)):
+            for j in range(len(landStartTime)):
+                startwater = waterStartTime[i]
+                endwater = startwater + waterDuration[i]
+                startland = max(endwater,landStartTime[j])
+                endland = startland + landDuration[j]
+                mintime = min(mintime,endland)
+        return mintime©leetcode
