@@ -1,0 +1,13 @@
+class Solution:
+    def minRemoval(self, nums: List[int], k: int) -> int:
+        new_nums = sorted(nums)
+        n = len(nums)
+        left = 0
+        max_value = -1
+        for i in range(n):
+            while new_nums[left]*k<new_nums[i]:
+                left +=1
+            
+            max_value = max(max_value,i-left+1)
+        return n - max_value
+        ©leetcode
