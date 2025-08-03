@@ -1,0 +1,15 @@
+class Solution:
+    def maxBalancedShipments(self, weight: List[int]) -> int:
+        n = len(weight)
+        def exact_ship(index):
+            if index >= n:
+                return 0
+            curr = weight[index]
+            for i in range(index+1,n):
+                if weight[i]<curr:
+                    return 1+ exact_ship(i+1)
+                curr = max(curr,weight[i])
+                
+            return 0
+        return exact_ship(0)
+          ©leetcode
