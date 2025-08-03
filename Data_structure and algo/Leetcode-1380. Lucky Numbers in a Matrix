@@ -1,0 +1,22 @@
+from typing import List
+import numpy as np
+class Solution:
+    def luckyNumbers(self, matrix: List[List[int]]) -> List[int]:
+        m,n = len(matrix),len(matrix[0])
+        col_max = []
+        row_min = []
+        output = []
+        matrix = np.array(matrix)
+        for i in range(n):
+            arr = matrix[:,i]
+            col_max.append(int(max(arr)))
+        for i in range(m):
+            arr = matrix[i,:]
+            row_min.append(int(min(arr)))
+        for i in range(m):
+            for j in range(n):
+                if row_min[i] == col_max[j]:
+                    output.append(int(row_min[i]))
+        return output
+
+        
