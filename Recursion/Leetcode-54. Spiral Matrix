@@ -1,0 +1,15 @@
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        m, n = len(matrix), len(matrix[0])
+        total = m * n
+        
+        def spiral(matrix, m, n, res, r, c, dr, dc):
+            if len(res) == total:
+                return res
+            for i in range(n):
+                r += dr
+                c += dc
+                res.append(matrix[r][c])
+            return spiral(matrix, n, m-1, res, r, c, dc, -dr)
+        
+        return spiral(matrix, m, n, [], 0, -1, 0, 1)
