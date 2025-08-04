@@ -1,0 +1,16 @@
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        matrix = [[0 for _ in range(n)]for _ in range(n)]
+        elements = n*n
+        def spiral_two(matrix,m,n,r,c,dr,dc,index):
+            if index > elements:
+                return matrix
+            for i in range(n):
+                r +=dr
+                c +=dc
+                matrix[r][c] = index
+                index+=1
+            return spiral_two(matrix,n,m-1,r,c,dc,-dr,index)
+        return spiral_two(matrix,n,n,0,-1,0,1,1)
+
+        
