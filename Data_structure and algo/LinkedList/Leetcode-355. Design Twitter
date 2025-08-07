@@ -1,0 +1,51 @@
+class Node:
+    def __init__(self,tweetID=None,userID=None):
+        self.id = tweetID
+        self.user = userID
+        self.next = None
+        self.diff = None
+class Twitter:
+
+    def __init__(self):
+        self.head = None
+        self.user = {}
+    def postTweet(self, userId: int, tweetId: int) -> None:
+        node = Node(tweetId,userId)
+        node.next = self.head
+        if self.head and self.head.user!= node.user:
+            node.diff = self.head
+        else:
+            node.diff = self.head.diff if self.head else None
+        self.head = node
+
+    def getNewsFeed(self, userId: int) -> List[int]:
+        res = []
+        node = self.head
+        follows = self.user.get(userId,set())
+        while node and len(res)<10:
+            if node.user == userId or node.user in follows:
+                res.append(node.id)
+                node = node.next
+            else:
+                node = node.diff
+        return res
+        
+    def follow(self, followerId: int, followeeId: int) -> None:
+        if followerId not in self.user:
+            self.user[followerId] = set()
+        self.user[followerId].add(followeeId)
+
+    def unfollow(self, followerId: int, followeeId: int) -> None:
+        if followerId == followeeId or followerId not in self.user:
+            return
+        self.user[followerId].discard(followeeId)
+
+        
+
+
+# Your Twitter object will be instantiated and called as such:
+# obj = Twitter()
+# obj.postTweet(userId,tweetId)
+# param_2 = obj.getNewsFeed(userId)
+# obj.follow(followerId,followeeId)
+# obj.unfollow(followerId,followeeId)
