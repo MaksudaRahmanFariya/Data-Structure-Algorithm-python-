@@ -1,0 +1,15 @@
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        new_arr= []
+        for i in range(1,n+1):
+            new_arr.append(i)
+        output = new_arr.copy()
+        new_arr2 = list(set(nums))
+        for num in new_arr2:
+            #print(num)
+            #print(new_arr[num-1])
+            if num == new_arr[num-1]:
+                output.remove(num)
+
+        return output
