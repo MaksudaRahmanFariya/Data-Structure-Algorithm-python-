@@ -1,0 +1,19 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        output = []
+        n1,n2 = len(nums1), len(nums2)
+        for i in range(n1):
+            for j in range(0,n2):
+                if nums1[i] == nums2[j] and j<n2-1:
+                    p = 0
+                    for k in range(j+1,n2):
+                        if nums2[k]>nums1[i]:
+                            output.append(nums2[k])
+                            p = 1
+                            break
+                    if p == 0:
+                        output.append(-1)    
+                elif nums1[i] == nums2[j] and j == n2-1:
+                    output.append(-1)
+       
+        return output
