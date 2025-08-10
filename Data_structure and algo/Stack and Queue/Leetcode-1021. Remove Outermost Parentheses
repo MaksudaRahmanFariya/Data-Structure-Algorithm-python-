@@ -1,0 +1,28 @@
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        res = []
+        n = len(s)
+        def decomposition(count,index):
+            if index == n:
+                return res
+            a = ""
+
+            for i in range(index,n):
+                if len(a)== 0:
+                    a = a+s[i]
+                    #i +=1
+                    count +=1
+                elif s[i] == "(" and count>0:
+                    a = a+s[i]
+                    count+=1
+                elif s[i] == ")" and count>0:
+                    a = a+s[i]
+                    count -=1
+            res.append(a)
+            return decomposition(0,index+len(a))
+        decomposition(0,0)
+        output = ""
+        for i in range(len(res)):
+            a = res[i]
+            output = output + a[1:-1]
+        return output
