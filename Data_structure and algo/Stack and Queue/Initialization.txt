@@ -1,0 +1,2 @@
+# For stack - It's LiFo
+# For Queue - It's FiFO
