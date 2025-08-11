@@ -1,0 +1,23 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        prev = image[sr][sc]
+        if prev == color:
+            return image
+        m,n = len(image),len(image[0])
+        q = deque()
+        q.append((sr,sc))
+        while q:
+            r,c = q.popleft()
+            if image[r][c] == prev:
+                image[r][c] = color
+                if r>0:
+                    q.append((r-1,c))
+                if r<m-1:
+                    q.append((r+1,c))
+                if c>0:
+                    q.append((r,c-1))
+                if c<n-1:
+                    q.append((r,c+1))
+        return image
+            
+       
