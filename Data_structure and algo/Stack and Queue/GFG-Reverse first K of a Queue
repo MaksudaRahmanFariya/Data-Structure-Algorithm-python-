@@ -1,0 +1,14 @@
+from collections import deque
+class Solution:
+    def reverseFirstK(self, q, k):
+        #code here 
+        new_qu = deque()
+        n = len(q)
+        if k>n:
+            return q
+        while k:
+            n = q.popleft()
+            new_qu.appendleft(n)
+            k -=1
+        final_q = deque(list(new_qu) + list(q))
+        return final_q
