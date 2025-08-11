@@ -1,0 +1,25 @@
+#User function Template for python3
+
+'''
+# Node Class:
+class Node:
+    def init(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+
+# Return a list containing the inorder traversal of the given tree
+class Solution:
+    def inOrder(self, root):
+        # code here
+        res = []
+        def traverse(node):
+            if not node:
+                return
+            traverse(node.left)
+            res.append(node.data)
+            traverse(node.right)
+        traverse(root)
+        return res
+        
