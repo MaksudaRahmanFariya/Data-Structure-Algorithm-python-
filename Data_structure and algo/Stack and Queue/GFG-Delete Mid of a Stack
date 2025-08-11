@@ -1,0 +1,18 @@
+from collections import deque
+class Solution:
+    def deleteMid(self, stack):
+        #code here
+        half = []
+        n = len(stack)
+        mid = (n)//2
+        for _ in range(mid):
+            #t = stack.pop()
+            half.append(stack.pop())
+        stack.pop()
+        while half:
+            stack.append(half.pop())
+    
+        return stack + half   
+            
+            
+        
