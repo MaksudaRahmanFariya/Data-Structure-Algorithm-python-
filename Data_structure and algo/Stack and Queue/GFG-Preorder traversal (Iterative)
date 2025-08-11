@@ -1,0 +1,22 @@
+'''
+# Node Class:
+class Node:
+    def init(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+
+class Solution:
+    # Return a list containing the preorder traversal of the given tree
+    def preOrder(self, root):
+        # code here
+        res = []
+        def traversepre(node):
+            if not node:
+                return
+            res.append(node.data)
+            traversepre(node.left)
+            traversepre(node.right)
+        traversepre(root)
+        return res
