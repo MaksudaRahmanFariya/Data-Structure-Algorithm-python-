@@ -1,0 +1,29 @@
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        n = len(asteroids)
+        neg_num = [0]*n
+        pos_num = [0]*n
+        for i in range(n):
+            if asteroids[i]>0:
+                pos_num[i] = asteroids[i]
+            else:
+                neg_num[i] = asteroids[i]
+        for i in range(1,n):
+            if neg_num[i]<0:
+                for j in range(i-1,-1,-1):
+                    if abs(neg_num[i])>pos_num[j]:
+                        pos_num[j] = 0
+                    elif abs(neg_num[i]) == pos_num[j]:
+                        neg_num[i] = 0
+                        pos_num[j] = 0
+                        break
+                    elif abs(neg_num[i]) < pos_num[j]:
+                        neg_num[i] = 0
+                        break
+        output = []
+        for i in range(n):
+            if pos_num[i]>0:
+                output.append(pos_num[i])
+            elif neg_num[i]<0:
+                output.append(neg_num[i])
+        return output
