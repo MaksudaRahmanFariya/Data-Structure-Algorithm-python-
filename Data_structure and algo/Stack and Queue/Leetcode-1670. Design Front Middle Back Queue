@@ -1,0 +1,53 @@
+from collections import deque
+class FrontMiddleBackQueue:
+
+    def __init__(self):
+        self.queue = deque()
+        self.new_que = deque()
+
+    def pushFront(self, val: int) -> None:
+        self.queue.appendleft(val)
+        self.balance()
+
+    def pushMiddle(self, val: int) -> None:
+        if len(self.queue)>len(self.new_que):
+            self.new_que.appendleft(self.queue.pop())
+        self.queue.append(val)
+   
+    def pushBack(self, val: int) -> None:
+        self.new_que.append(val)
+        self.balance()
+        
+
+    def popFront(self) -> int:
+        temp = self.queue.popleft() if self.queue else -1
+        self.balance()
+        return temp
+    def popMiddle(self) -> int:
+        if not self.queue:
+            return -1
+
+        mid_val = (self.queue or [-1]).pop()
+        self.balance()
+        return mid_val
+    def popBack(self) -> int:
+        val = (self.new_que or self.queue or [-1]).pop()
+        self.balance()
+        return val
+    def balance(self):
+        if len(self.queue)>len(self.new_que):
+            self.new_que.appendleft(self.queue.pop())
+        if len(self.queue)<len(self.new_que):
+            self.queue.append(self.new_que.popleft())
+
+        
+
+
+# Your FrontMiddleBackQueue object will be instantiated and called as such:
+# obj = FrontMiddleBackQueue()
+# obj.pushFront(val)
+# obj.pushMiddle(val)
+# obj.pushBack(val)
+# param_4 = obj.popFront()
+# param_5 = obj.popMiddle()
+# param_6 = obj.popBack()
