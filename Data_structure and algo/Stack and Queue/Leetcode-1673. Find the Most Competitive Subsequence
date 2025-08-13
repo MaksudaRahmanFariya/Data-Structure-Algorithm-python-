@@ -1,0 +1,12 @@
+class Solution:
+    def mostCompetitive(self, nums: List[int], k: int) -> List[int]:
+        if nums and len(set(nums)) == 1:
+            return [nums[0]]*k   # number of element allowed to delete
+        res = []
+        count = len(nums)-k
+        for num in nums:
+            while res and num<res[-1] and count>0:
+                res.pop()
+                count -=1
+            res.append(num) 
+        return res[:k]
