@@ -5,7 +5,7 @@ class Solution:
         n = len(gas)
         visited = []
         for i in range(n):
-            t_res +=gas[i]-cost[i]
+            t_res +=gas[i]-cost[i] # track of total gas and cost so that i don't have to rotate and back 
             curr += gas[i] - cost[i]
             if curr<0:
                 curr = 0
