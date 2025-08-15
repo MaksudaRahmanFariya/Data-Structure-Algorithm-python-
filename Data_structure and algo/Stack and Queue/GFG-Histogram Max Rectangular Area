@@ -1,0 +1,19 @@
+class Solution:
+    def getMaxArea(self, arr):
+        n = len(arr)
+        max_value = 0
+        output = []       # store index and value
+        for i,h in enumerate(arr):
+            start = i
+            while output and output[-1][1]>h:
+                index,height = output.pop()
+                max_value = max(max_value,height*(i-index))
+                start = index
+            output.append((start,h))
+            
+                
+        
+        for i,h in output:
+            max_value = max(max_value, h*(len(arr)-i))
+                
+        return max_value
