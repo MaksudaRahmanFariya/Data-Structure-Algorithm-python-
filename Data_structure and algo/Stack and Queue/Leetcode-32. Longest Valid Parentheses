@@ -1,0 +1,15 @@
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        n = len(s)
+        count = 0
+        res = [-1]
+        for i in range(n):
+            if s[i] == '(':
+                res.append(i)
+            else:
+                res.pop()
+                if not res:
+                    res.append(i)
+                else:
+                    count = max(count,i-res[-1])
+        return count
